@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">PersonalAssistant</string>
+    <string name="action_settings">Settings</string>
+    <string name="ativaReconhecimento">Ativar Reconhecimento</string>
+</resources>
