@@ -91,46 +91,30 @@ public class MainActivityFragment extends Fragment {
     }
 
     private void iniciaAnalise(final String texto) {
-        Properties props = new Properties();
-        try {
-            props.load(FileUtils.openInputStream(new File("tone_conversation_integration.properties")));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
         final ConversationService conversationService = new ConversationService(ConversationService.VERSION_DATE_2016_07_11);
-        conversationService.setUsernameAndPassword(
-                props.getProperty("CONVERSATION_USERNAME", "c1c17428-7393-4dc2-95ad-2a1ec0b45984"),
-                props.getProperty("CONVERSATION_PASSWORD", "6nQeljNo8Db0")
-        );
+        conversationService.setUsernameAndPassword("56cfc2ed-865b-46cc-b31d-2cde129f33a3", "lKmFrfIb5fno");
 
         final ToneAnalyzer toneService = new ToneAnalyzer(ToneAnalyzer.VERSION_DATE_2016_05_19);
-        toneService.setUsernameAndPassword(
-                props.getProperty("TONE_ANALYZER_USERNAME", "1865c083-01bb-4694-b466-24b2ab4825cb"),
-                props.getProperty("TONE_ANALYZER_PASSWORD", "cXYNg2jWI3LB")
-        );
+        toneService.setUsernameAndPassword("78ea83c3-ad4b-4f2d-a0ac-7918ef39d952", "1HatBDQAYkr8");
 
-        final String workspaceId = props.getProperty("WORKSPACE_ID", "ab3c6acd-5faa-4d21-b0ce-4aa46dffaf78");
+        final String workspaceId = "ab3c6acd-5faa-4d21-b0ce-4aa46dffaf78";
 
         final Map<String, Object> context = new HashMap<String, Object>();
-
         toneService.getTone(texto, null).enqueue(new ServiceCallback<ToneAnalysis>() {
             @Override
             public void onResponse(ToneAnalysis toneResponsePayload) {
-                // update context with the tone data returned by the Tone Analyzer
-                //ToneDetection.updateUserTone(context, toneResponsePayload, false);
-                ToneOptions toneOptions = new ToneOptions.Builder().html(false).build();
-                ToneAnalysis tone = toneService.getTone(texto, toneOptions).execute();
-                //System.out.println(tone);
-                Log.e("tone", tone.toString());
 
+                // update context with the tone data returned by the Tone Analyzer
+                ToneDetection.updateUserTone(context, toneResponsePayload, false);
+                Log.e("tone", context.toString());
+                tvResultado.setText(context.toString());
                 // call Conversation Service with the input and tone-aware context
                 MessageRequest newMessage = new MessageRequest.Builder().inputText(texto).context(context).build();
                 conversationService.message(workspaceId, newMessage).enqueue(new ServiceCallback<MessageResponse>() {
                     @Override
                     public void onResponse(MessageResponse response) {
                         System.out.println(response);
-                        tvResultado.setText(response.getInputText());
+                        Log.e("conv", response.toString());
                     }
 
                     @Override
@@ -139,9 +123,7 @@ public class MainActivityFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Exception e) {
-
-            }
+            public void onFailure(Exception e) { }
         });
     }
 
