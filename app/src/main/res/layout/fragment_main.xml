@@ -6,8 +6,8 @@
     android:layout_height="match_parent"
     tools:context="br.com.bm.personalassistant.activity.main.MainActivityFragment"
     tools:showIn="@layout/activity_main"
-    android:orientation="vertical"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:orientation="vertical">
 
     <Button
         android:id="@+id/btAtivarReconhecimento"
@@ -17,10 +17,60 @@
         android:layout_weight="0.05"
         android:text="@string/ativaReconhecimento" />
 
-    <TextView
-        android:id="@+id/tvResultado"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.05"
-        android:gravity="center" />
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/text1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.05"
+            android:gravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/text2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.05"
+            android:gravity="center_horizontal"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/text3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.05"
+            android:gravity="center_horizontal"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/text4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.05"
+            android:gravity="center_horizontal"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/text5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.05"
+            android:gravity="center_horizontal"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/text6"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.05"
+            android:gravity="center_horizontal"
+            android:text=""
+            android:textColor="@color/colorPrimary" />
+
+    </LinearLayout>
+
 </LinearLayout>

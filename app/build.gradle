@@ -27,8 +27,8 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:design:25.3.1'
-    compile 'com.ibm.watson.developer_cloud:tone-analyzer:3.8.0'
-    compile 'com.ibm.watson.developer_cloud:conversation:3.8.0'
+    compile 'com.ibm.watson.developer_cloud:tone-analyzer:3.7.0'
+    compile 'com.ibm.watson.developer_cloud:conversation:3.7.0'
     compile "commons-io:commons-io:2.4"
     testCompile 'junit:junit:4.12'
 }
